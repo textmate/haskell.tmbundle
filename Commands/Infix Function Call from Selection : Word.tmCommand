@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env python
+	<string>#!/bin/bash
 
-import sys
-x = sys.stdin.read().strip()
-if x:
-	sys.stdout.write("\`%s\`$0" % x)
-else:
-	sys.stdout.write("\`$1\`$0")
+NAME="$(cat)"
+if [[ -z "$NAME" ]]; then
+	NAME="\$1"
+fi
+
+echo "\`$NAME\`\$0"
 </string>
 	<key>fallbackInput</key>
 	<string>word</string>
