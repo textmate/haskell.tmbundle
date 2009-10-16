@@ -3,14 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>${1:t} &lt;- ${0:f t}</string>
+	<string>${1:name} &lt;- ${0:expression}</string>
 	<key>keyEquivalent</key>
 	<string>^,</string>
 	<key>name</key>
-	<string>t &lt;- f t</string>
+	<string>Left Arrow</string>
 	<key>scope</key>
 	<string>source.haskell</string>
+	<key>tabTrigger</key>
+	<string>&lt;</string>
 	<key>uuid</key>
-	<string>4B154C05-D107-4316-9AAD-43A3DCF1860A</string>
+	<string>9EF1F854-442C-40B2-BED5-454A015AA26D</string>
 </dict>
 </plist>
