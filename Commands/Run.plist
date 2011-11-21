@@ -1,27 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>beforeRunningCommand</key>
 	<string>saveActiveFile</string>
 	<key>command</key>
-	<string>: ${TM_HASKELL:=runhaskell}
-require_cmd "$TM_HASKELL"
+	<string>#!/usr/bin/env bash
 
-"$TM_HASKELL" "$TM_FILEPATH" 2&gt;&amp;1 | haskellmate
+"${TM_HASKELL:=runhaskell}" "$TM_FILEPATH" 2&gt;&amp;1 | haskellmate
 
 </string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>@r</string>
 	<key>name</key>
 	<string>Run</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>requiredCommands</key>
+	<array>
+		<dict>
+			<key>command</key>
+			<string>runhaskell</string>
+			<key>locations</key>
+			<array>
+				<string>/opt/local/bin/runhaskell</string>
+				<string>/usr/local/bin/runhaskell</string>
+			</array>
+			<key>variable</key>
+			<string>TM_HASKELL</string>
+		</dict>
+	</array>
 	<key>scope</key>
 	<string>source.haskell</string>
 	<key>uuid</key>
 	<string>3B083BE7-9812-4F06-A758-CCAD9514E797</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
