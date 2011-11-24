@@ -43,7 +43,7 @@
 			<key>end</key>
 			<string>^((\\)end)({)code(})</string>
 			<key>name</key>
-			<string>meta.function.embedded.haskell.latex</string>
+			<string>meta.embedded.block.haskell.latex</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -65,6 +65,8 @@
 			</dict>
 			<key>comment</key>
 			<string>This breaks type signature detection for now, but it's better than having no highlighting whatsoever.</string>
+			<key>contentName</key>
+			<string>source.haskell</string>
 			<key>end</key>
 			<string>$</string>
 			<key>name</key>
