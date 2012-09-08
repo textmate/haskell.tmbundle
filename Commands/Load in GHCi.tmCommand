@@ -29,15 +29,25 @@ APPLESCRIPT
 </string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>@R</string>
 	<key>name</key>
 	<string>Load in GHCi</string>
-	<key>output</key>
-	<string>showAsTooltip</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
 	<key>scope</key>
 	<string>source.haskell</string>
+	<key>semanticClass</key>
+	<string>process.external.run.haskell</string>
 	<key>uuid</key>
 	<string>2242C46C-153E-4EEB-B80B-A5398559D759</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

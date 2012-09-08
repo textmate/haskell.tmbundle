@@ -40,6 +40,8 @@
 	</array>
 	<key>scope</key>
 	<string>source.haskell</string>
+	<key>semanticClass</key>
+	<string>process.run.script.haskell</string>
 	<key>uuid</key>
 	<string>3B083BE7-9812-4F06-A758-CCAD9514E797</string>
 	<key>version</key>
