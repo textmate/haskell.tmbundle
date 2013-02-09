@@ -36,7 +36,7 @@ TextMate::Executor.run(haskell, ENV['TM_FILEPATH'])
 			<string>runhaskell</string>
 			<key>locations</key>
 			<array>
-				<string>/opt/local/bin/runhaskell</string>
+				<string>/opt/local/bin/runhugs</string>
 				<string>/usr/local/bin/runhaskell</string>
 			</array>
 			<key>variable</key>
