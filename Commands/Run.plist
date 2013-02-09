@@ -3,13 +3,20 @@
 <plist version="1.0">
 <dict>
 	<key>beforeRunningCommand</key>
-	<string>saveActiveFile</string>
+	<string>saveModifiedFiles</string>
 	<key>command</key>
-	<string>#!/usr/bin/env bash
-"${TM_HASKELL:=runhaskell}" "$TM_FILEPATH" 2&gt;&amp;1 | "${TM_SUPPORT_PATH}/bin/haskellmate"
+	<string>#!/usr/bin/env ruby -wKU
+require "#{ENV["TM_SUPPORT_PATH"]}/lib/tm/save_current_document"
+require "#{ENV["TM_SUPPORT_PATH"]}/lib/tm/executor"
+require "#{ENV["TM_SUPPORT_PATH"]}/lib/escape"
+
+TextMate.save_if_untitled('hs')
+
+haskell = e_sh(ENV['TM_HASKELL'] || 'runhaskell')
+TextMate::Executor.run(haskell, ENV['TM_FILEPATH'])
 </string>
 	<key>input</key>
-	<string>none</string>
+	<string>document</string>
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>keyEquivalent</key>
