@@ -370,13 +370,20 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([a-z_][a-zA-Z0-9_']*|\([|!%$+\-.,=&lt;/&gt;]+\))\s*(::)</string>
+			<string>^\s*(?&lt;fn&gt;(?:[a-z_][a-zA-Z0-9_']*|\([|!%$+\-.,=&lt;/&gt;]+\))(?:\s*,\s*\g&lt;fn&gt;)?)\s*(::)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
-					<key>name</key>
-					<string>entity.name.function.haskell</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>[a-z_][a-zA-Z0-9_']*|\([|!%$+\-.,=&lt;/&gt;]+\)</string>
+							<key>name</key>
+							<string>entity.name.function.haskell</string>
+						</dict>
+					</array>
 				</dict>
 				<key>2</key>
 				<dict>
