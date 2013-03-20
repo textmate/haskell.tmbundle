@@ -370,7 +370,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(?&lt;fn&gt;(?:[a-z_][a-zA-Z0-9_']*|\([|!%$+\-.,=&lt;/&gt;]+\))(?:\s*,\s*\g&lt;fn&gt;)?)\s*(::)</string>
+			<string>^\s*(?&lt;fn&gt;(?:[a-z_][a-zA-Z0-9_']*|\((?!--+\))[\p{S}\p{P}&amp;&amp;[^(),;\[\]`{}_"']]+\))(?:\s*,\s*\g&lt;fn&gt;)?)\s*(::)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -379,9 +379,13 @@
 					<array>
 						<dict>
 							<key>match</key>
-							<string>[a-z_][a-zA-Z0-9_']*|\([|!%$+\-.,=&lt;/&gt;]+\)</string>
+							<string>[a-z_][a-zA-Z0-9_']*</string>
 							<key>name</key>
 							<string>entity.name.function.haskell</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#infix_op</string>
 						</dict>
 					</array>
 				</dict>
@@ -433,7 +437,7 @@
 			<key>comment</key>
 			<string>In case this regex seems overly general, note that Haskell permits the definition of new operators which can be nearly any string of punctuation characters, such as $%^&amp;*.</string>
 			<key>match</key>
-			<string>[|!%$?~+:\-.=&lt;/&gt;\\]+</string>
+			<string>[\p{S}\p{P}&amp;&amp;[^(),;\[\]`{}_"']]+</string>
 			<key>name</key>
 			<string>keyword.operator.haskell</string>
 		</dict>
@@ -478,7 +482,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(^[ \t]+)?(?=--)</string>
+					<string>(^[ \t]+)?(?=--+(?![\p{S}\p{P}&amp;&amp;[^(),;\[\]`{}_"']]))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -487,6 +491,8 @@
 							<string>punctuation.whitespace.comment.leading.haskell</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>Operators may begin with '--' as long as they are not entirely composed of '-' characters. This means comments can't be immediately followed by an allowable operator character.</string>
 					<key>end</key>
 					<string>(?!\G)</string>
 					<key>patterns</key>
@@ -517,8 +523,10 @@
 		</dict>
 		<key>infix_op</key>
 		<dict>
+			<key>comment</key>
+			<string>An operator cannot be composed entirely of '-' characters; instead, it should be matched as a comment.</string>
 			<key>match</key>
-			<string>(\([|!%$+:\-.=&lt;/&gt;]+\)|\(,+\))</string>
+			<string>(\((?!--+\))[\p{S}\p{P}&amp;&amp;[^(),;\[\]`{}_"']]+\)|\(,+\))</string>
 			<key>name</key>
 			<string>entity.name.function.infix.haskell</string>
 		</dict>
