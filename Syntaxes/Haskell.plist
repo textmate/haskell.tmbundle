@@ -29,7 +29,7 @@
 			<key>comment</key>
 			<string>In case this regex seems unusual for an infix operator, note that Haskell allows any ordinary function application (elem 4 [1..10]) to be rewritten as an infix expression (4 `elem` [1..10]).</string>
 			<key>match</key>
-			<string>(`)[a-zA-Z_']*?(`)</string>
+			<string>(`)[\p{Ll}_][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*(`)</string>
 			<key>name</key>
 			<string>keyword.operator.function.infix.haskell</string>
 		</dict>
@@ -119,13 +119,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>[A-Z][A-Za-z_']*</string>
+					<string>[\p{Lu}\p{Lt}][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*</string>
 					<key>name</key>
 					<string>entity.other.inherited-class.haskell</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b[a-z][a-zA-Z0-9_']*\b</string>
+					<string>\b[\p{Ll}_][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*</string>
 					<key>name</key>
 					<string>variable.other.generic-type.haskell</string>
 				</dict>
@@ -214,7 +214,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b[A-Z][a-zA-Z_']*</string>
+					<string>\b[\p{Lu}\p{Lt}][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*</string>
 					<key>name</key>
 					<string>entity.other.inherited-class.haskell</string>
 				</dict>
@@ -370,7 +370,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(?&lt;fn&gt;(?:[a-z_][a-zA-Z0-9_']*|\((?!--+\))[\p{S}\p{P}&amp;&amp;[^(),;\[\]`{}_"']]+\))(?:\s*,\s*\g&lt;fn&gt;)?)\s*(::)</string>
+			<string>^\s*(?&lt;fn&gt;(?:[\p{Ll}_][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*|\((?!--+\))[\p{S}\p{P}&amp;&amp;[^(),;\[\]`{}_"']]+\))(?:\s*,\s*\g&lt;fn&gt;)?)\s*(::)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -379,7 +379,7 @@
 					<array>
 						<dict>
 							<key>match</key>
-							<string>[a-z_][a-zA-Z0-9_']*</string>
+							<string>[\p{Ll}_][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*</string>
 							<key>name</key>
 							<string>entity.name.function.haskell</string>
 						</dict>
@@ -415,7 +415,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b[A-Z]\w*\b</string>
+			<string>\b[\p{Lu}\p{Lt}][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*</string>
 			<key>name</key>
 			<string>constant.other.haskell</string>
 		</dict>
@@ -542,13 +542,13 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b[a-z][a-zA-Z_']*</string>
+					<string>\b[\p{Ll}_][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*</string>
 					<key>name</key>
 					<string>entity.name.function.haskell</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b[A-Z][A-Za-z_']*</string>
+					<string>\b[\p{Lu}\p{Lt}][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*</string>
 					<key>name</key>
 					<string>storage.type.haskell</string>
 				</dict>
@@ -575,7 +575,7 @@
 		<key>module_name</key>
 		<dict>
 			<key>match</key>
-			<string>[A-Z][A-Za-z._']*</string>
+			<string>(?&lt;conid&gt;[\p{Lu}\p{Lt}][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*(\.\g&lt;conid&gt;)?)</string>
 			<key>name</key>
 			<string>support.other.module.haskell</string>
 		</dict>
@@ -621,7 +621,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\(\s*([A-Z][A-Za-z]*)\s+([a-z][A-Za-z_']*)\)\s*(=&gt;)</string>
+					<string>\(\s*([\p{Lu}\p{Lt}][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*)\s+([\p{Ll}_][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*)\)\s*(=&gt;)</string>
 					<key>name</key>
 					<string>meta.class-constraint.haskell</string>
 				</dict>
@@ -649,13 +649,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b[a-z][a-zA-Z0-9_']*\b</string>
+					<string>\b[\p{Ll}_][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*</string>
 					<key>name</key>
 					<string>variable.other.generic-type.haskell</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b[A-Z][a-zA-Z0-9_']*\b</string>
+					<string>\b[\p{Lu}\p{Lt}][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*</string>
 					<key>name</key>
 					<string>storage.type.haskell</string>
 				</dict>
