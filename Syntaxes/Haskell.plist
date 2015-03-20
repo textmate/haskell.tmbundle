@@ -315,6 +315,37 @@
 					<key>name</key>
 					<string>constant.character.escape.control.haskell</string>
 				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\\\s</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.escape.begin.haskell</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\\</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.escape.end.haskell</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\S+</string>
+							<key>name</key>
+							<string>invalid.illegal.character-not-allowed-here.haskell</string>
+						</dict>
+					</array>
+				</dict>
 			</array>
 		</dict>
 		<dict>
