@@ -401,7 +401,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(?&lt;fn&gt;(?:[\p{Ll}_][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*|\((?!--+\))[\p{S}\p{P}&amp;&amp;[^(),;\[\]`{}_"']]+\))(?:\s*,\s*\g&lt;fn&gt;)?)\s*(::)</string>
+			<string>^\s*(?&lt;fn&gt;(?:[\p{Ll}_][\p{Ll}_\p{Lu}\p{Lt}\p{Nd}']*|\((?!--+\))((?![(),;\[\]`{}_"'])[\p{S}\p{P}])+\))(?:\s*,\s*\g&lt;fn&gt;)?)\s*(::)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -468,7 +468,7 @@
 			<key>comment</key>
 			<string>In case this regex seems overly general, note that Haskell permits the definition of new operators which can be nearly any string of punctuation characters, such as $%^&amp;*.</string>
 			<key>match</key>
-			<string>[\p{S}\p{P}&amp;&amp;[^(),;\[\]`{}_"']]+</string>
+			<string>((?![(),;\[\]`{}_"'])[\p{S}\p{P}])+</string>
 			<key>name</key>
 			<string>keyword.operator.haskell</string>
 		</dict>
@@ -513,7 +513,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(^[ \t]+)?(?=--+(?![\p{S}\p{P}&amp;&amp;[^(),;\[\]`{}_"']]))</string>
+					<string>(^[ \t]+)?(?=--+((?![\p{S}\p{P}])|[(),;\[\]`{}_"']))</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -557,7 +557,7 @@
 			<key>comment</key>
 			<string>An operator cannot be composed entirely of '-' characters; instead, it should be matched as a comment.</string>
 			<key>match</key>
-			<string>(\((?!--+\))[\p{S}\p{P}&amp;&amp;[^(),;\[\]`{}_"']]+\)|\(,+\))</string>
+			<string>(\((?!--+\))((?![(),;\[\]`{}_"'])[\p{S}\p{P}])+\)|\(,+\))</string>
 			<key>name</key>
 			<string>entity.name.function.infix.haskell</string>
 		</dict>
