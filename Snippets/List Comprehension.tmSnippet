@@ -7,7 +7,7 @@
 	<key>name</key>
 	<string>List Comprehension</string>
 	<key>scope</key>
-	<string>source.haskell constant.language.nil</string>
+	<string>source.haskell constant.language.empty-list</string>
 	<key>tabTrigger</key>
 	<string>[</string>
 	<key>uuid</key>
