@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>command</key>
+	<string>#!/bin/bash
+
+THASKELL=${TM_HASKELL:-ghci}
+
+esc () {
+STR="$1" ruby &lt;&lt;"RUBY"
+   str = ENV['STR']
+   str = str.gsub(/'/, "'\\\\''")
+   str = str.gsub(/[\\"]/, '\\\\\\0')
+   print "'#{str}'"
+RUBY
+}
+
+osascript &lt;&lt;- APPLESCRIPT
+tell app "Terminal"
+	launch
+	activate
+	do script "clear; cd $(esc "${TM_DIRECTORY}"); ghci $(esc "${TM_FILEPATH}")"
+	set position of first window to {100, 100}
+end tell
+APPLESCRIPT</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>@W</string>
+	<key>name</key>
+	<string>Load in GHCi (New Window)</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
+	<key>scope</key>
+	<string>source.haskell</string>
+	<key>semanticClass</key>
+	<string>process.external.run.haskell</string>
+	<key>uuid</key>
+	<string>F804D183-AEEC-4905-B849-7C5B125865EA</string>
+</dict>
+</plist>

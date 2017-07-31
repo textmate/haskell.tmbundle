@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>beforeRunningCommand</key>
-	<string>nop</string>
-	<key>command</key>
-	<string>#!/bin/bash
+	<key>changed</key>
+	<dict>
+		<key>command</key>
+		<string>#!/bin/bash
 
 THASKELL=${TM_HASKELL:-ghci}
 
@@ -18,36 +18,34 @@ STR="$1" ruby18 &lt;&lt;"RUBY"
 RUBY
 }
 
-osascript &lt;&lt;- APPLESCRIPT
-tell app "Terminal"
-	launch
-	activate
-	do script "clear; cd $(esc "${TM_DIRECTORY}"); ${THASKELL} $(esc "${TM_FILEPATH}")"
-	set position of first window to {100, 100}
-end tell
-APPLESCRIPT
-</string>
-	<key>input</key>
-	<string>none</string>
-	<key>inputFormat</key>
-	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>@R</string>
-	<key>name</key>
-	<string>Load in GHCi</string>
-	<key>outputCaret</key>
-	<string>afterOutput</string>
-	<key>outputFormat</key>
-	<string>text</string>
-	<key>outputLocation</key>
-	<string>toolTip</string>
-	<key>scope</key>
-	<string>source.haskell</string>
-	<key>semanticClass</key>
-	<string>process.external.run.haskell</string>
+PROCESS=ghc
+number=$(ps aux | grep -e $PROCESS | grep -v grep | wc -l | tr -s "\n")
+
+if [ $number -gt 0 ]
+    then
+		osascript &lt;&lt;- APPLESCRIPT
+		tell app "Terminal"
+		activate
+			set winID to ID of window 1 -- get the ID of the frontmost window
+		  	do script ":quit" in window ID winID 
+			do script "clear; cd $(esc "${TM_DIRECTORY}"); $THASKELL $(esc "${TM_FILEPATH}")" in window ID winID 
+		end tell
+		APPLESCRIPT
+		
+else
+	osascript &lt;&lt;- APPLESCRIPT
+	tell app "Terminal"
+		launch
+		activate
+		do script "clear; cd $(esc "${TM_DIRECTORY}"); $THASKELL $(esc "${TM_FILEPATH}")"
+		set position of first window to {100, 100}
+	end tell
+	APPLESCRIPT
+fi</string>
+	</dict>
+	<key>isDelta</key>
+	<true/>
 	<key>uuid</key>
 	<string>2242C46C-153E-4EEB-B80B-A5398559D759</string>
-	<key>version</key>
-	<integer>2</integer>
 </dict>
 </plist>
