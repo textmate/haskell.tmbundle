@@ -193,6 +193,10 @@
 					<key>include</key>
 					<string>#module_exports</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#strings</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -273,131 +277,8 @@
 			<string>#pragma</string>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>"</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.begin.haskell</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>"</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.end.haskell</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>string.quoted.double.haskell</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>\\(NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS|US|SP|DEL|[abfnrtv\\\"'\&amp;])</string>
-					<key>name</key>
-					<string>constant.character.escape.haskell</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\\o[0-7]+|\\x[0-9A-Fa-f]+|\\[0-9]+</string>
-					<key>name</key>
-					<string>constant.character.escape.octal.haskell</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\\\^[A-Z@\[\]\\\^_]</string>
-					<key>name</key>
-					<string>constant.character.escape.control.haskell</string>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>\\\s</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>constant.character.escape.begin.haskell</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>\\</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>constant.character.escape.end.haskell</string>
-						</dict>
-					</dict>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>match</key>
-							<string>\S+</string>
-							<key>name</key>
-							<string>invalid.illegal.character-not-allowed-here.haskell</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.begin.haskell</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>constant.character.escape.haskell</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>constant.character.escape.octal.haskell</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>constant.character.escape.hexadecimal.haskell</string>
-				</dict>
-				<key>5</key>
-				<dict>
-					<key>name</key>
-					<string>constant.character.escape.control.haskell</string>
-				</dict>
-				<key>6</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.end.haskell</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(?x)
-			(')
-			(?:
-				[\ -\[\]-~]								# Basic Char
-			  | (\\(?:NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE
-					|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS
-					|US|SP|DEL|[abfnrtv\\\"'\&amp;]))		# Escapes
-			  | (\\o[0-7]+)								# Octal Escapes
-			  | (\\x[0-9A-Fa-f]+)						# Hexadecimal Escapes
-			  | (\\\^[A-Z@\[\]\\\^_])					# Control Chars
-			)
-			(')
-			</string>
-			<key>name</key>
-			<string>string.quoted.single.haskell</string>
+			<key>include</key>
+			<string>#strings</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -631,6 +512,139 @@
 					<string>\b(LANGUAGE|OPTIONS_GHC|INCLUDE|WARNING|DEPRECATED|MINIMAL|UNPACK|NOUNPACK|SOURCE|OVERLAPPING|OVERLAPPABLE|OVERLAPS|INCOHERENT|INLINE|NOINLINE|INLINABLE|CONLIKE|LINE|RULES|SPECIALIZE|SPECIALISE)\b</string>
 					<key>name</key>
 					<string>keyword.other.preprocessor.haskell</string>
+				</dict>
+			</array>
+		</dict>
+		<key>strings</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>"</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.haskell</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>"</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.haskell</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.quoted.double.haskell</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\\(NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS|US|SP|DEL|[abfnrtv\\\"'\&amp;])</string>
+							<key>name</key>
+							<string>constant.character.escape.haskell</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\\o[0-7]+|\\x[0-9A-Fa-f]+|\\[0-9]+</string>
+							<key>name</key>
+							<string>constant.character.escape.octal.haskell</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\\\^[A-Z@\[\]\\\^_]</string>
+							<key>name</key>
+							<string>constant.character.escape.control.haskell</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\\\s</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>constant.character.escape.begin.haskell</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>\\</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>constant.character.escape.end.haskell</string>
+								</dict>
+							</dict>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>\S+</string>
+									<key>name</key>
+									<string>invalid.illegal.character-not-allowed-here.haskell</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.haskell</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.escape.haskell</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.escape.octal.haskell</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.escape.hexadecimal.haskell</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>constant.character.escape.control.haskell</string>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.haskell</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?x)
+					(')
+					(?:
+						[\ -\[\]-~]								# Basic Char
+					  | (\\(?:NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE
+							|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS
+							|US|SP|DEL|[abfnrtv\\\"'\&amp;]))		# Escapes
+					  | (\\o[0-7]+)								# Octal Escapes
+					  | (\\x[0-9A-Fa-f]+)						# Hexadecimal Escapes
+					  | (\\\^[A-Z@\[\]\\\^_])					# Control Chars
+					)
+					(')
+					</string>
+					<key>name</key>
+					<string>string.quoted.single.haskell</string>
 				</dict>
 			</array>
 		</dict>
