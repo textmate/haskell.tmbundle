@@ -181,7 +181,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(qualified|as|hiding)</string>
+					<string>\b(qualified|as|hiding)\b</string>
 					<key>name</key>
 					<string>keyword.other.haskell</string>
 				</dict>
