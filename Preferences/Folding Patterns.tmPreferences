@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Folding Patterns</string>
+	<key>scope</key>
+	<string>source.haskell</string>
+	<key>settings</key>
+	<dict>
+		<key>foldingIndentedBlockStart</key>
+		<string>(?x) (?# Largely taken from the existing indentation rules )
+			  (^data)
+			| (^.*(=|\bdo|\bwhere|\bthen|\belse|\bof)\s*$)
+			| (^.*\bif(?!.*\bthen\b.*\belse\b.*).*$)</string>
+		<key>foldingIndentedBlockIgnore</key>
+		<string>^\s*$</string>
+	</dict>
+	<key>uuid</key>
+	<string>BF6EAE3B-362F-4C54-8092-BA74F253C777</string>
+</dict>
+</plist>
